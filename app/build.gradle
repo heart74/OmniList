@@ -2,6 +2,15 @@ apply plugin: 'com.android.application'
 apply plugin: 'io.fabric'
 
 android {
+    splits {
+        abi {
+            enable true
+            reset()
+            include 'x86', 'armeabi-v7a', 'x86_64'
+            universalApk true
+        }
+    }
+
     compileSdkVersion rootProject.ext.compileSdkVersion
     defaultConfig {
         applicationId "me.shouheng.omnilist"
@@ -14,12 +23,14 @@ android {
     }
     signingConfigs {
         release {
-            Properties poperties = new Properties()
-            poperties.load(new FileInputStream('../OmniList-SignConfigs/config.properties'))
-            keyAlias 'key0'
-            storeFile file('../../OmniList-SignConfigs/palm.jks')
-            storePassword poperties.getProperty("storePassword")
-            keyPassword poperties.getProperty("keyPassword")
+//            Properties poperties = new Properties()
+//            poperties.load(new FileInputStream('../OmniList-SignConfigs/config.properties'))
+//            keyAlias 'key0'
+//            storeFile file('../../OmniList-SignConfigs/palm.jks')
+//            storePassword poperties.getProperty("storePassword")
+//            keyPassword poperties.getProperty("keyPassword")
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
         }
     }
     buildTypes {
