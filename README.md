@@ -1,2 +1,0 @@
-# LifeTracker
-App LifeTracker
